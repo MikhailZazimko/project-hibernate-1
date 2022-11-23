@@ -1,23 +1,29 @@
 package com.game.entity;
 
+import jakarta.persistence.*;
+
 import java.util.Date;
+
+@Entity
+@Table(name = "player")
 
 
 public class Player {
+    @Id
     private Long id;
-
+    @Column(name = "name")
     private String name;
-
+    @Column(name = "title")
     private String title;
-
+    @Enumerated(EnumType.ORDINAL)
     private Race race;
-
+    @Enumerated(EnumType.ORDINAL)
     private Profession profession;
-
+    @Column(name = "birthday")
     private Date birthday;
-
+    @Column(name = "banned")
     private Boolean banned;
-
+    @Column(name = "level")
     private Integer level;
 
     public Player() {
