@@ -5,25 +5,30 @@ import jakarta.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "player")
-
+@Table(schema ="rpg",name = "player")
+@org.hibernate.annotations.NamedQuery(name = "getAllCount",
+query = "select count(p) from Player p")
 
 public class Player {
     @Id
+    @Column(nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column(name = "name")
+    @Column(name = "name",length = 12,nullable = false)
     private String name;
-    @Column(name = "title")
+    @Column(name = "title",length = 30,nullable = false)
     private String title;
+    @Column(name = "race",nullable = false)
     @Enumerated(EnumType.ORDINAL)
     private Race race;
+    @Column(name = "profession",nullable = false)
     @Enumerated(EnumType.ORDINAL)
     private Profession profession;
-    @Column(name = "birthday")
+    @Column(name = "birthday",nullable = false)
     private Date birthday;
-    @Column(name = "banned")
+    @Column(name = "banned",nullable = false)
     private Boolean banned;
-    @Column(name = "level")
+    @Column(name = "level",nullable = false)
     private Integer level;
 
     public Player() {
